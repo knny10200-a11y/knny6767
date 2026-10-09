@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>終極真心話測驗</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f3f8;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 90%;
+      width: 350px;
+    }
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+      height: 60px;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="mainCard">
+    <!-- 這裡的文字可以改為你同學的名字 -->
+    <h1>請問「小明」今天是不是該請大家喝飲料？</h1>
+    
+    <div class="btn-container">
+      <button id="yesBtn" onclick="acceptResult()">是的！</button>
+      <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()" ontouchstart="moveButton()">不是</button>
+    </div>
+  </div>
+
+  <script>
+    function moveButton() {
+      const btn = document.getElementById('noBtn');
+      const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40);
+      const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40);
+      
+      btn.style.position = 'fixed';
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+    }
+
+    function acceptResult() {
+      const card = document.getElementById('mainCard');
+      card.innerHTML = `
+        <h1 style="color: #4CAF50;">🎉 感謝承認！</h1>
+        <p style="font-size: 18px;">系統已記錄你的選擇，請於今天放學前兌現飲料！全班感謝你！</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
